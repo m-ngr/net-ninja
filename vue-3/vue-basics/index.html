@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="./app.js" defer></script>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <div id="box-1">
+      <h1>{{name}}</h1>
+      <!-- render using v-show: CSS-level - efficient  -->
+      <h2 v-show="showTitle">{{title}}</h2>
+      <!-- render using v-if: DOM-level - not-as-efficient -->
+      <p v-if="showAge">Age:{{age}}</p>
+      <!-- v-on:EVENT="JS-CODE" -->
+      <button v-on:click="++age">Increase Age</button>
+      <!-- @EVENT="JS-CODE" -->
+      <button @click="--age">Decrease Age</button>
+      <!-- call method, pass arguments -->
+      <button @click="changeTitle('Backend Developer')">Change Title</button>
+      <!-- reference a function, no-agrs -->
+      <button @click="toggleFullName">Toggle Full Name</button>
+      <!-- render button using conditional JS -->
+      <button @click="toggleAge">{{showAge? "Hide Age":"Show Age"}}</button>
+      <!-- render button using vue conditional  -->
+      <button @click="toggleTitle" v-show="!showTitle">Show Title</button>
+      <button @click="toggleTitle" v-show="showTitle">Hide Title</button>
+    </div>
+
+    <div id="box-2">
+      <div
+        class="rect"
+        @mouseover="handleEvent($event, 'enter')"
+        @mouseleave="handleEvent"
+        @dblclick="handleEvent"
+        @mousemove="handleMouseMove"
+      >
+        {{x}}, {{y}}
+      </div>
+    </div>
+
+    <div id="box-3">
+      <h2>{{showFavsOnly? "Fav Projects":"Projects"}}</h2>
+      <button @click="toggleShowFavs">
+        {{showFavsOnly? "show all":"show Favs"}}
+      </button>
+      <ul>
+        <!-- class -> will exist for all classes -->
+        <!-- :class -> will be added dynamically :: {className: condition} -->
+        <li
+          v-for="project in (showFavsOnly? favProjects :projects)"
+          class="appear-in-all-items"
+          :class="{fav:project.fav}"
+          @click="toggleFav(project)"
+        >
+          <h3>
+            {{project.title}}
+            <!-- v-bind:ATTRIBUTE="JS-CODE" -->
+            <!-- :ATTRIBUTE="JS-CODE" [shorthand] -->
+            <a :href="project.url" target="_blank">Live</a>
+          </h3>
+          <p>TECH: {{project.tech}}</p>
+        </li>
+      </ul>
+
+      <div v-show="!showFavsOnly" class="form">
+        <h3>Add Project</h3>
+        <form @submit.prevent="addProject" novalidate>
+          <div class="form-group">
+            <label for="title">Title</label>
+            <!-- v-model: connect input with state -->
+            <input type="text" id="title" v-model="newProject.title" />
+            <span class="error">{{ newProjectErrors.title }}</span>
+          </div>
+          <div class="form-group">
+            <label for="tech">Tech</label>
+            <input type="text" id="tech" v-model="newProject.tech" />
+            <span class="error">{{ newProjectErrors.tech }}</span>
+          </div>
+          <div class="form-group">
+            <label for="url">Live URL</label>
+            <input type="url" id="url" v-model="newProject.url" />
+            <span class="error">{{ newProjectErrors.url }}</span>
+          </div>
+          <div class="form-group checkbox">
+            <input type="checkbox" id="fav" v-model="newProject.fav" />
+            <label for="fav">Fav</label>
+          </div>
+          <button type="submit">Add Project</button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

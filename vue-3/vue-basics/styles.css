@@ -1,0 +1,84 @@
+* {
+  box-sizing: border-box;
+}
+.rect {
+  background-color: #a0ee97;
+  margin: 20px 0;
+  display: inline-block;
+  width: 300px;
+  text-align: center;
+  padding: 100px 0;
+}
+
+.fav {
+  background-color: #a0ee97;
+}
+
+.form {
+  max-width: 300px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.form h3 {
+  text-align: center;
+  margin-top: 0;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+input {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+}
+
+button[type="submit"] {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 480px) {
+  .login-form {
+    max-width: 100%;
+    padding: 15px;
+  }
+}
+
+.checkbox input,
+.checkbox label {
+  width: auto;
+  display: inline-block;
+}
