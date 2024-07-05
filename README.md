@@ -1,6 +1,6 @@
 # net-ninja
 
-My projects made through Net Ninja tutorials
+My projects made through Net Ninja tutorials.
 
 | Course                                                                                                       | Files                             |
 | ------------------------------------------------------------------------------------------------------------ | --------------------------------- |
